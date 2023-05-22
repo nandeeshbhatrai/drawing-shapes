@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Futuristic Webpage</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript">MathJax.Hub.Config({tex2jax: {inlineMath: [ ['$','$'], ["\\(","\\)"] ]}});</script>
+<style>
+body {
+background-color: #000;
+color: #fff;
+font-family: Arial, sans-serif;
+font-size: 16px;
+line-height: 1.5;
+margin: 0;
+padding: 0;
+}
+
+header {
+background-color: #333;
+padding: 20px;
+text-align: center;
+}
+
+h1 {
+font-size: 30px;
+margin: 0;
+}
+
+nav {
+background: #444;
+padding: 10px;
+text-align: center;
+}
+
+nav ul {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+nav li {
+display: inline-block;
+margin: 0 10px;
+position: relative;
+}
+
+nav a {
+color: #fff;
+text-decoration: none;
+text-transform: uppercase;
+display: block;
+padding: 10px;
+transition: all 0.5s ease;
+}
+
+nav a:hover {
+background-color: #fff;
+color: #000;
+border-radius: 50px;
+box-shadow: 0 0 10px #fff;
+}
+
+nav a::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: #fff;
+opacity: 0;
+transition: all 0.5s ease;
+z-index: -1;
+}
+
+nav a:hover::before {
+opacity: 0.2;
+}
+
+section {
+padding: 50px;
+text-align: center;
+}
+
+section h2 {
+font-size: 36px;
+margin: 0 0 20px;
+}
+
+section p {
+font-size: 24px;
+margin: 0 020px;
+}
+
+footer {
+background-color: #333;
+padding: 20px;
+text-align: center;
+margin-top: 20px;
+}
+
+footer p {
+margin: 0;
+}
+
+
+
+label {
+  font-size: 18px;
+  color: #fff;
+  display: inline-block;
+  margin: 10px;
+}
+
+input[type="number"] {
+  border: none;
+  margin: 10px;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #333;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0,0);
+  transition: all 0.3s-in-out;
+  display: inline-block;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  animation: rainbow 01s linear infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    box-shadow: 0 0 10px rgb(255, 0, 0);
+  }
+  16.67% {
+    box-shadow: 0 0 10px rgba(255, 255, 0);
+  }
+  33.33% {
+    box-shadow: 0 0 10px rgba(0, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(0, 255, 255);
+  }
+  66.67% {
+    box-shadow: 0 0 10px rgba(0, 0, 255);
+  }
+  83.33% {
+    box-shadow: 0 0 10px rgba(255, 0, 255);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 0, 0);
+  }
+}
+
+
+#validateC, #drawC, #areaC, #validateR, #drawR, #areaR {
+  margin: 10px;
+  background-color: #333;
+  color: #00bfff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0px 2 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+#validateC:hover, #drawC:hover, #areaC:hover,#validateR:hover, #drawR:hover, #areaR:hover {
+  background-color: #00bfff;
+  color: black;
+  box-shadow: 0px 2px 10px rgb(221, 255, 0);
+  cursor: pointer;
+}
+
+#validateC:active, #drawC:active, #areaC:active,#validateR:active, #drawR:active, #areaR:active {
+  background: #ff0000;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+
+
+#Clear {
+  display: block;
+  margin: 5px auto;
+  background-color: #00bfff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;  
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0px 2px 5px rgba(0, 191, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+#Clear:hover {
+  background-color: #fff;
+  color: #00bfff;
+  box-shadow: 0px 2px 10px rgba(0, 191, 255, 0.5);
+  transform: translateY(-5px);
+}
+
+#Clear:active {
+  background-color: #00bfff;
+  color: #fff;
+  box-shadow: none;
+  transform: translateY(0px);
+}
+
+
+
+
+</style>
+</head>
+<body>
+<header>
+<h>Made with 💗 by Nandeesh</h1>
+</header>
+
+<nav>
+<ul>
+<li><a href="#" target="_self">Home</a></li>
+<li><a href="Aboutme.html" target="_blank">About</a></li>
+<li><a href="Freelancing.html" target="_blank">Services</a></li>
+<li><a href="contact.html" target="_blank">Contact</a></li>
+</ul>
+</nav>
+
+<section>
+<h2>Drawing Board</h2>
+</section>
+
+<div style="display: flex; flex-direction: row;">
+
+  <!-- circle -->
+
+
+  <div style="display: flex; flex-direction: column; align-items: center;text-align: center; flex-basis: 50%;border-right: 2px solid yellow;padding-right: 5px;margin: 5px;">
+    <div class="circle">
+   <h1>Circle</h1>
+      <p>The <i>area</i> of a circle with radius $r$ is given by $\pi r^2$. Similarly, the <i>perimeter</i> of a circle with radius $r$ given by $2\pi r$. Now, let's visualise the circle using JavaScript and HTML.</p>
+  
+      <label>Enter the radius of circle:</label>
+      <input type="number" id="radius">
+  
+      <div>
+        <button id="validateC">Validate Radius</button>
+        <button id="drawC">Draw</button>
+        <button id="areaC">Compute Area / Perimeter</button>
+      </div>
+  
+
+      <pre id="emptyC"></pre>
+
+      <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+        <canvas id="paper1" width="400px" height="400px" style="border: 2px solid #f10909;padding: 2px;"></canvas>
+      </div>
+      <p>Paper size: 400px $\times$ 400px. Max allowed radius: 200.</p>
+
+    </div>
+  </div>
+  
+  <!-- rectangel -->
+
+<div style="display: flex; flex-direction: column; align-items: center;text-align: center;flex-basis: 50%;margin: 5px;padding-right: 5px;">
+  <div class="rectangle">
+    <h1>Rectangle</h1>
+    <p>The <i>area</i> of a rectangle with width $w$ and height $h$ is given by $a \cdot b$. Similarly, the <i>perimeter</i> of a reactangle with width $w$ and height $h$ is given by $2\cdot(w+h)$. Now, let's visualise the rectangle using JavaScript and HTML.</p>
+  
+    <div style="display: flex; flex-direction: row; align-items: center;justify-content: center;">
+      <label>Width of rectangle:</label>
+      <input type="number" id="width">
+      <label>Height of rectangle:</label>
+      <input type="number" id="height">
+    </div>
+  
+    <div>
+      <button id="validateR">Validate Width / Height</button>
+      <button id="drawR">Draw</button>
+      <button id="areaR">Compute Area / Perimeter</button>
+    </div>
+  
+    <pre id="emptyR"></pre>
+    <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+      <canvas id="paper2" width="600px" height="400px" style="border: 2px solid #f10909; padding: 10px;">Your Does not Support Canvas</canvas>
+    </div>
+  
+    <p>Paper size: 600px $\times$ 400px. Max allowed width: 600 and height: 400.</p>
+  </div>
+</div>
+  
+
+</div>
+<button id="Clear">Clear All</button>
+
+
+<footer>
+<p>&copy; 2023 Nandeesh's Webpage. All rights reserved.</p>
+</footer>
+</body>
+<script>
+
+// validate circle
+
+let validateC = document.getElementById("validateC");
+validateC.onclick = function(){
+  let radius = document.getElementById("radius").value;
+  if(radius <= 0 || radius>200){
+    alert("Please give a valid radius! 😟")
+  }else{
+    document.getElementById("emptyC").textContent = `Radius = ${radius}`;
+  }
+}
+
+// draw circle
+
+let drawC = document.getElementById("drawC");
+drawC.onclick = function() {
+    let canvas = document.getElementById("paper1");
+    let r = document.getElementById("radius").value;
+
+    var ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    let center_x_coordinate = canvas.width / 2;
+    let center_y_coordinate = canvas.height / 2;
+    ctx.beginPath();
+    ctx.arc(center_x_coordinate, center_y_coordinate, r, 0, 2 * Math.PI);
+    ctx.strokeStyle = '#FBFFB1';
+    ctx.stroke();
+}
+
+// area and perimeter
+
+let areaC = document.getElementById("areaC");
+areaC.onclick = function(){
+  let r = document.getElementById("radius").value;
+  document.getElementById("emptyC").textContent = `Radius = ${r}` +"\n" +`Area of the circle: ${Math.PI*r*r}` + "\n" + `Perimeter of the circle: ${2*Math.PI*r}`
+}
+
+
+// Validate Rectangle
+
+let validateR = document.getElementById("validateR");
+validateR.onclick = function(){
+  let w = document.getElementById("width").value;
+  let h = document.getElementById("height").value;
+  if(w <=0 || h<=0 || w>600 || h>400){
+    alert("Please give a valid size! ");
+  }else{
+    document.getElementById("emptyR").textContent = `Width = ${w}\nHeight = ${h}`;
+  }
+}
+
+// Draw reactangle
+
+let drawR = document.getElementById("drawR");
+drawR.onclick = function() {
+    let canvas = document.getElementById("paper2");
+    let ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let w = document.getElementById("width").value;
+    let h = document.getElementById("height").value;
+
+
+    ctx.beginPath();
+    ctx.rect([(canvas.width - w) / 2], [(canvas.height - h) / 2], [w] , [h]);
+    ctx.strokeStyle = '#FBFFB1';
+    ctx.stroke();
+
+    // check for square
+
+    if(w === h){
+      alert("The rectange with given dimentions is a Square!");
+    }
+}
+
+
+// Area and Perimeter of the rectangle
+
+let areaR = document.getElementById("areaR");
+areaR.onclick = function(){
+  let w = document.getElementById("width").value;
+  let h = document.getElementById("height").value;
+
+  document.getElementById("emptyR").textContent = `Width = ${w}\nHeight = ${h}` +"\n" +`Area of the Rectangle: ${w*h}` + "\n" + `Perimeter of the Rectangle: ${2*w+2*h}`
+}
+
+
+// clear all
+
+
+let clearButton = document.getElementById("Clear");
+clearButton.onclick = function() {
+  let canvas1 = document.getElementById("paper1");
+  let ctx1 = canvas1.getContext("2d");
+  ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
+
+  let canvas2 = document.getElementById("paper2");
+  let ctx2 = canvas2.getContext("2d");
+  ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+
+  document.getElementById("radius").value = "";
+  document.getElementById("width").value = "";
+  document.getElementById("height").value = "";
+
+  document.getElementById("emptyC").textContent = "";
+  document.getElementById("emptyR").textContent = "";
+};
+
+</script>
+</html>

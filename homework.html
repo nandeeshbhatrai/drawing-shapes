@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH Visualisation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/javascript">MathJax.Hub.Config({tex2jax: {inlineMath: [ ['$','$'], ["\\(","\\)"] ]}});</script>
+    <style>
+        html{
+    background: #e466aa;
+    font-family: cursive;
+}
+
+.text{
+    color: rgb(255, 255, 255);
+}
+
+button{
+    margin: 5px;
+}
+
+
+.circle{
+    border-radius: 20px;
+    margin-bottom: 5px;
+    padding: 20px;
+    background-color: #f1e2ff;
+}
+
+.rectangle{
+    border-radius: 20px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #ffe0e0;
+}
+
+canvas{
+    margin-left: 30%;
+}
+
+.na{
+    margin-left: 30%
+}
+    </style>
+</head>
+<body>
+    <div class="text">
+    <h1>Drawing Board</h1>
+    <p>This webpage helps you to visualise simple geometrical shapes such as a Circle and a Rectangle.</p>
+</div>
+
+
+    <!-- CIRCLE -->
+
+<div class="circle">
+    <h2>Circle</h2>
+    <p>The <i>area</i> of a circle with radius $r$ is given by $\pi r^2$. Similarly, the <i>perimeter</i> of a circle with radius $r$ is given by $2\pi r$. Now, let's visualise the circle using JavaScript and HTML.</p>
+
+    <div style="display: flex; flex-direction: row;">
+        <p>Enter the Radius, $r$: </p>
+        <input type="number" id="radius" style="height: 15px; justify-self: center; align-self: center; margin-left: 5px;">
+    </div>
+
+    <div>
+        <button id="validateC">Validate Radius</button>
+        <button id="drawC">Draw</button>
+        <button id="areaC">Compute Area/Perimeter</button>
+    </div>
+    <div>
+    <p class="na">Circle: <span id="cirhaiyanahi">NA.</span></p>
+    <canvas id="paper1" name="clearKaro" width="400px" height="400px" style="border: 2px solid #f10909; "></canvas>
+</div>
+    <p>Paper size: 400px $\times$ 400px. Max allowed radius: 200.</p>
+</div>
+
+<!-- RECTANGLE -->
+
+<div class="rectangle">
+
+    <h2>Rectangle</h2>
+    <p>The <i>area</i> of a rectangle with width $w$ and height $h$ is given by $a\cdot b$. Similarly, the <i>perimeter</i> of a reactangle with width $w$ and height $h$ is given by $2\cdot(w+h)$. Now, let's visualise the rectangle using JavaScript and HTML.</p>
+
+    <div style="display: flex; flex-direction: row;">
+        <p>Enter the width, $w$: </p>
+        <input type="number" id="widthRec" style="height: 15px; justify-self: center; align-self: center; margin-left: 5px; margin-right: 5px;">
+        <p>Enter the height, $h$: </p>
+        <input type="text" id="heightRec" style="height: 15px; justify-self: center; align-self: center; margin-left: 5px; margin-right: 5px;">
+    </div>
+
+    <div>
+        <button id="validateR">Validate Width/Height</button>
+        <button id="drawR">Draw</button>
+        <button id="areaR">Compute Area/Perimeter</button>
+    </div>
+    <p class="na">Rectangle: <span id="recthaiyanahi">NA.</span></p>
+    <canvas id="paper2" width="600px" height="400px" style="border: 2px solid #f10909; padding: 2px;">Your Browser Does not Support Canvas</canvas>
+    <p>Paper size: 400px $\times$ 400px. Max allowed width: 600 and height: 400.</p>
+
+</div>
+    
+
+
+
+</body>
+
+<script>
+    
+
+// For a Rectangle
+
+// //Done for The Canvas
+
+let r;
+let g=0;
+let clearC;
+
+let validateC = document.getElementById("validateC");
+validateC.onclick = function(){
+
+    let canvas = document.getElementById("paper1");
+    var ctx = document.getElementById("paper1").getContext("2d");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+
+    let r = document.getElementById("radius").value;
+
+
+    abc = document.getElementById("cirhaiyanahi").textContent=`Radius = ${r}`;
+
+
+    if(r>0){
+        alert(`Radius is ${r}`);
+        console.log(r)
+    }
+    else{
+        alert("Please enter a valid radius😟");
+    }
+}
+
+//For a circle
+
+let drawC = document.getElementById("drawC");
+drawC.onclick = function(){
+
+
+    
+    let canvas = document.getElementById("paper1");
+    
+    let r = document.getElementById("radius").value;
+    
+    abc = document.getElementById("cirhaiyanahi").textContent=`Radius = ${r}`;
+
+    var ctx = document.getElementById("paper1").getContext("2d");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+    let center_x_coordinate=canvas.width/2;
+    let center_y_coordinate=canvas.height/2;
+    ctx.beginPath();
+    ctx.arc(center_x_coordinate, center_y_coordinate, r , 0 ,2*Math.PI);
+    
+    ctx.stroke();
+
+}
+
+
+
+areaC=document.getElementById("areaC");
+areaC.onclick = function(){
+    let r = document.getElementById("radius").value;
+    alert(`The area of the circle is: ${Math.PI*r*r} and the perimeter of the circle is ${2*Math.PI*r}`);
+    console.log(`area = ${Math.PI*r*r} and perimeter = ${2*Math.PI*r}`);
+
+    if(g===0){
+        clearC = document.createElement("button");
+        clearC.innerHTML= "Clear All"
+        document.body.appendChild(clearC);
+        g = 1;
+    }
+    clearC.onclick = function(){
+        let canvas1 = document.getElementById("paper1");
+        let canvas2 = document.getElementById("paper2");
+    
+        var ctx1 = document.getElementById("paper1").getContext("2d");
+        var ctx2 = document.getElementById("paper2").getContext("2d");
+    
+        ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
+        ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+
+        let input = document.getElementById("radius");
+        let wid = document.getElementById("widthRec");
+        let hig = document.getElementById("heightRec");
+        input.value="";
+        wid.value1="";
+        hig.value2="";
+    }
+
+}
+
+
+
+
+
+// RECTANGLE
+
+
+
+
+
+let validateR = document.getElementById("validateR");
+validateR.onclick = function(){
+
+
+    let wid = document.getElementById("widthRec");
+    let hig = document.getElementById("heightRec");
+    
+    let w = wid.value;
+    let h = hig.value;
+
+
+
+    // let canvas = document.getElementById("paper2");
+
+    // let start_x_coordinate = canvas.width/2;
+    // let start_y_coordinate = canvas.height/2;
+
+    // var ctx = document.getElementById("paper2").getContext("2d");
+    // ctx.beginPath;
+    // ctx.rect([start_x_coordinate], [start_y_coordinate], [w] , [h]);
+    // ctx.stroke();
+    
+
+
+    if(w>0 && h>0){
+        alert(`width = ${w} and height = ${h}`);
+        console.log(w);
+        console.log(h);
+    }
+    else{
+        alert("Please enter valid dimensions😟");
+    }
+}
+
+
+let drawR = document.getElementById("drawR");
+drawR.onclick = function(){
+
+    let canvas = document.getElementById("paper2");
+    let wid = document.getElementById("widthRec");
+    let hig = document.getElementById("heightRec");
+
+    let ctx = document.getElementById("paper2").getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    let w = wid.value;
+    let h = hig.value;
+
+
+    ctx.beginPath;
+    ctx.rect([0], [0], [w] , [h]);
+    ctx.stroke();
+    
+
+}
+
+
+let areaR = document.getElementById("areaR");
+areaR.onclick = function(){
+    let wid = document.getElementById("widthRec");
+    let hig = document.getElementById("heightRec");
+    
+    let w = wid.value;
+    let h = hig.value;
+
+
+    alert(`The area of the rectangle is: ${w*h} and the perimeter of the rectangle is: ${2*Number(w) + 2*Number(h)}`);
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    if(g===0){
+        clearC = document.createElement("button");
+        clearC.innerHTML= "Clear All"
+        document.body.appendChild(clearC);
+        g = 1;
+    }
+    clearC.onclick = function(){
+        let canvas1 = document.getElementById("paper1");
+        let canvas2 = document.getElementById("paper2");
+    
+        var ctx1 = document.getElementById("paper1").getContext("2d");
+        var ctx2 = document.getElementById("paper2").getContext("2d");
+    
+        ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
+        ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+
+        let input = document.getElementById("radius");
+        let input1 = document.getElementById("widthRec");
+        let input2 = document.getElementById("heightRec");
+        input.value="";
+        input1.value1="";
+        input2.value2="";
+    }
+}
+
+
+</script>
+</html>
